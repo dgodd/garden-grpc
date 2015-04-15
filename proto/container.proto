@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package proto;
+
+service Container {
+  rpc Run(RunRequest) returns (stream Stdout) {}
+  rpc Exit(ExitRequest) returns (ExitRequest) {}
+}
+
+message RunRequest {
+  string path = 1;
+}
+
+message Stdout {
+  string line = 1;
+}
+
+message ExitRequest {
+  int32 code = 1;
+}
